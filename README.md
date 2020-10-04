@@ -5,3 +5,4 @@ Goal:
 * night shift
 * morning podcast alarm
 * recordings
+* iOS for most convenience?
