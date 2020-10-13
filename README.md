@@ -4,5 +4,5 @@ Goal:
 * set alarm automatically
 * night shift
 * morning podcast alarm
-* recordings
+* recordings => otter
 * iOS for most convenience?
