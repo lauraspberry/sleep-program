@@ -5,4 +5,4 @@ Goal:
 * night shift
 * morning podcast alarm
 * recordings => otter
-* iOS for most convenience?
+* iOS for most convenience
