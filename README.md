@@ -6,3 +6,5 @@ Goal:
 * morning podcast alarm
 * recordings => otter
 * iOS for most convenience
+
+* resources; hack month!
