@@ -8,3 +8,4 @@ Goal:
 * iOS for most convenience
 
 * algorithms
+* look into python libraries
