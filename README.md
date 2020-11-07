@@ -5,6 +5,7 @@ Goal:
 * night shift
 * morning podcast alarm
 * recordings => otter
+* reminders
 * iOS for most convenience
 
 * algorithms
