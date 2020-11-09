@@ -10,3 +10,6 @@ Goal:
 
 * algorithms
 * look into python libraries
+
+Features:
+* simple python file
