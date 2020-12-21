@@ -1,0 +1,31 @@
+<!-- about.html-->
+
+{% extends "base.html" %}
+{% block title %}To Do List{% endblock %}
+{% block body %}
+<div class="jumbotron">
+  <h1>The To Do List</h1>
+  <p class="lead">You can learn more about my website here.</p>
+  <div>Add a new todo item:  
+    <form action="{{ url_for('add_item') }}" method="POST">  
+        <input type="text" name="todoitem">  
+        <input type="submit" value="Add Item" class="button">  
+    </form>
+    <input type="submit" value="Add Item" class="button">  
+  <div>  
+      <h2>Incomplete Items</h2>  
+      <ul>  
+          {% for todo in incomplete %}  
+          <li style="font-size: 30pt" class='mark'>{{ todo.text }} <a href="{{ url_for('complete', id=todo.id) }}">Mark As Complete</a></li>  
+          {% endfor %}      
+      </ul>  
+      <h2>Completed Items</h2>  
+      <ul>  
+          {% for todo in complete %}  
+          <li style="font-size: 30pt">{{ todo.text }}</li>  
+          {% endfor %}  
+      </ul>  
+  </div>  
+</div>  
+</div>
+{% endblock %}
