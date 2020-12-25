@@ -13,20 +13,29 @@
     </form>
     <input type="submit" value="Add Item" class="button">  
   <div>  
-      <h2>Incomplete Items</h2>  
+      <!-- <h2>Incomplete Items</h2>  
       <ul>  
           {% for todo in incomplete %}  
           <li style="font-size: 30pt" class='mark'>{{ todo.item }} <a href="{{ url_for('complete', id=items.id) }}">Mark As Complete</a></li>  
           {% endfor %}     
-      </ul>  
+      </ul>   -->
       <h2>Completed Items</h2>  
-      <ul>  
-          {% for todo in complete %}  
-          <li style="font-size: 30pt">{{ todo.items }}</li> 
-          <li style="font-size: 30pt">{{ items.item }}</li> 
-          <li style="font-size: 30pt">{{ items.status }}</li>  
+      <ul> 
+        <li>{{complete.get_json()}}</li> 
+        <li>{{complete.get_json().count}}</li> 
+        <li>{{complete.get_json().items}}</li> 
+        <li>{{complete.get_json().keys()}}</li> 
+        <li>{{complete.get_json().values()}}</li> 
+        <li>{{complete.get_json().values()[1]}}</li> 
+          {% for todo in complete.get_json() %}  
+          <output name="{{ todo.id }}">{{ todo }}
+          <!-- <li style="font-size: 30pt">{{ todo.item }}</li>  -->
+          <!-- <li style="font-size: 30pt">{{ todo.status }}</li>   -->
           {% endfor %}  
       </ul>  
+
+      <!-- <div id="myData"></div>
+      <script src='index.js'></script> -->
   </div>  
 </div>  
 </div>

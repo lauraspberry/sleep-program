@@ -14,7 +14,8 @@ def about():
 
 @app.route('/todolist')
 def todolist():
-    return render_template("todolist.html")
+    var1 = get_all_items()
+    return render_template("todolist.html", complete=var1)
 
 @app.route('/item/new', methods=['POST'])
 def add_item():
@@ -42,6 +43,7 @@ def get_all_items():
     # Return response
     response = Response(json.dumps(res_data), mimetype='application/json')
     return response
+    #return res_data
 
 @app.route('/item/status', methods=['GET'])
 def get_item():
