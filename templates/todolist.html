@@ -8,10 +8,17 @@
   <p class="lead">You can learn more about my website here.</p>
   <div>Add a new todo item:  
     <form action="{{ url_for('add_item') }}" method="POST">  
-        <input type="text" name="todoitem">  
+        <input type="text" name="item">  
         <input type="submit" value="Add Item" class="button">  
     </form>
-    <input type="submit" value="Add Item" class="button">  
+    <form action="{{ url_for('delete_item') }}" method="POST">  
+        <input type="text" name="item">  
+        <input type="submit" value="Delete Item" class="button">  
+    </form>
+    <form action="{{ url_for('add_item') }}" method="POST">  
+      <input type="text" name="item">  
+      <input type="submit" value="Add Item" class="button">  
+    </form> 
   <div>  
       <!-- <h2>Incomplete Items</h2>  
       <ul>  
@@ -21,16 +28,17 @@
       </ul>   -->
       <h2>Completed Items</h2>  
       <ul> 
+        <li>{{complete}}</li> 
         <li>{{complete.get_json()}}</li> 
-        <li>{{complete.get_json().count}}</li> 
+        <!-- <li>{{complete.get_json().count}}</li> 
         <li>{{complete.get_json().items}}</li> 
         <li>{{complete.get_json().keys()}}</li> 
         <li>{{complete.get_json().values()}}</li> 
-        <li>{{complete.get_json().values()[1]}}</li> 
-          {% for todo in complete.get_json() %}  
-          <output name="{{ todo.id }}">{{ todo }}
-          <!-- <li style="font-size: 30pt">{{ todo.item }}</li>  -->
-          <!-- <li style="font-size: 30pt">{{ todo.status }}</li>   -->
+        <li>{{complete.get_json().values()[1]}}</li>  -->
+          {% for todo in complete.get_json().values()[1] %}
+          <br>  
+          <li style="font-size: 30pt">{{ todo[0] }}</li> 
+          <li style="font-size: 30pt">{{ todo[1] }}</li>  
           {% endfor %}  
       </ul>  
 

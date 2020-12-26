@@ -1,12 +1,22 @@
 import helper
-from flask import Flask, request, jsonify, render_template, url_for, Response
+from flask import Flask, request, jsonify, render_template, url_for, Response, redirect
 import json
 
 app = Flask(__name__)
 
+if __name__ == "main":
+    app.run(debug=True)
+
 @app.route('/')
 def index():
     return render_template("index.html")
+
+@app.route('/print')
+def printMsg():
+    app.logger.warning('testing warning log')
+    app.logger.error('testing error log')
+    app.logger.info('testing info log')
+    return "Check your console"
 
 @app.route('/about')
 def about():
@@ -15,12 +25,21 @@ def about():
 @app.route('/todolist')
 def todolist():
     var1 = get_all_items()
+    #parsedData = json.parse(var1);
     return render_template("todolist.html", complete=var1)
 
 @app.route('/item/new', methods=['POST'])
 def add_item():
     # Get item from the POST body
-    req_data = request.get_json()
+    req_data = request.form
+    app.logger.warning("=========HI")
+    app.logger.warning(request)
+    app.logger.warning("=========FORM")
+    app.logger.warning(request.form)
+    app.logger.warning("=========vALUES")
+    app.logger.warning(request.values)
+    app.logger.warning(req_data)
+    #item = req_data.values()[1]
     item = req_data['item']
 
     # Add item to the list
@@ -29,11 +48,14 @@ def add_item():
     # Return error if item not added
     if res_data is None:
         response = Response("{'error': 'Item not added - " + item + "'}", status=400 , mimetype='application/json')
-        return response
+        #return response
+    	return redirect(url_for('todolist'))
 
     # Return response
     response = Response(json.dumps(res_data), mimetype='application/json')
-    return response
+    #return response
+    return redirect(url_for('todolist'))
+
 
 @app.route('/items/all')
 def get_all_items():
@@ -86,10 +108,11 @@ def update_status():
 
     return response
 
-@app.route('/item/remove', methods=['DELETE'])
+@app.route('/item/remove', methods=['POST'])
 def delete_item():
     # Get item from the POST body
-    req_data = request.get_json()
+    req_data = request.form
+    #print(req_data)
     item = req_data['item']
 
     # Delete item from the list
@@ -98,9 +121,13 @@ def delete_item():
     # Return error if the item could not be deleted
     if res_data is None:
         response = Response("{'error': 'Error deleting item - '" + item +  "}", status=400 , mimetype='application/json')
-        return response
+        #return response
+        return redirect(url_for('todolist'))
+
 
     # Return response
     response = Response(json.dumps(res_data), mimetype='application/json')
 
-    return response
+    #return response
+    return redirect(url_for('todolist'))
+
