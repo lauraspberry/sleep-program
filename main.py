@@ -11,13 +11,6 @@ if __name__ == "main":
 def index():
     return render_template("index.html")
 
-@app.route('/print')
-def printMsg():
-    app.logger.warning('testing warning log')
-    app.logger.error('testing error log')
-    app.logger.info('testing info log')
-    return "Check your console"
-
 @app.route('/about')
 def about():
     return render_template("about.html")
