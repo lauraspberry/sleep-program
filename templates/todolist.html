@@ -15,9 +15,10 @@
         <input type="text" name="item">  
         <input type="submit" value="Delete Item" class="button">  
     </form>
-    <form action="{{ url_for('add_item') }}" method="POST">  
+    <form action="{{ url_for('update_status') }}" method="POST">  
       <input type="text" name="item">  
-      <input type="submit" value="Add Item" class="button">  
+      <input type="text" name="status">  
+      <input type="submit" value="Update Item" class="button">
     </form> 
   <div>  
       <!-- <h2>Incomplete Items</h2>  

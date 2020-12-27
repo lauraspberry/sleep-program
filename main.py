@@ -81,10 +81,10 @@ def get_item():
     response = Response(json.dumps(res_data), status=200, mimetype='application/json')
     return response
 
-@app.route('/item/update', methods=['PUT'])
+@app.route('/item/update', methods=['POST']) #put
 def update_status():
     # Get item from the POST body
-    req_data = request.get_json()
+    req_data = request.form
     item = req_data['item']
     status = req_data['status']
 
@@ -94,14 +94,18 @@ def update_status():
     # Return error if the status could not be updated
     if res_data is None:
         response = Response("{'error': 'Error updating item - '" + item + ", " + status   +  "}", status=400 , mimetype='application/json')
-        return response
+        #return response
+        return redirect(url_for('todolist'))
+
 
     # Return response
     response = Response(json.dumps(res_data), mimetype='application/json')
 
-    return response
+    #return response
+    return redirect(url_for('todolist'))
 
-@app.route('/item/remove', methods=['POST'])
+
+@app.route('/item/remove', methods=['POST']) #delete
 def delete_item():
     # Get item from the POST body
     req_data = request.form
