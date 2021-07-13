@@ -1,6 +1,6 @@
 # sleep-program
 
-goal: create a simple to do web app with Python, SQL, and Flask
+goal: create a web application with Python, SQL, and Flask
 
 this application would be used for all aspects of sleep -- for you to jot down late night ideas, document dreams, or just keep track of how well you slept.
 
