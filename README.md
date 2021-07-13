@@ -1,7 +1,11 @@
 # sleep-program
 
-goal: simple to do app with python, sql, and flask :)
-write documentation!
+goal: create a simple to do web app with Python, SQL, and Flask
+
+this application would be used for all aspects of sleep -- for you to jot down late night ideas, document dreams, or just keep track of how well you slept.
+
+
+## To use this application: 
 
 download this repo (zip or git clone)
 
